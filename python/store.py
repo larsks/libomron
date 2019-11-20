@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
+
 import sqlite3, os, sys, time
 
 def ymdhms2seconds(YY,MM,DD,hh=0,mm=0,ss=0):
@@ -15,9 +17,9 @@ class Data(object):
         try:
             self.initdb(tablename)
         except sqlite3.OperationalError:
-            print 'Using existing %s:%s'%(filename,tablename)
+            print('Using existing %s:%s'%(filename,tablename))
         else:
-            print 'Made new %s:%s'%(filename,tablename)
+            print('Made new %s:%s'%(filename,tablename))
         return
 
     def initdb(self,tablename):
@@ -56,4 +58,4 @@ class Data(object):
 if '__main__' == __name__:
     d = Data()
     rows = d.all()
-    for row in rows: print row
+    for row in rows: print(row)

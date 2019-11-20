@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
+
 import os
 
 def device():
@@ -10,7 +12,7 @@ def device():
         pass
 
     from subprocess import Popen, PIPE
-    stuff = Popen(["lsusb"],stdout=PIPE).communicate()[0]
+    stuff = Popen(["lsusb"],stdout=PIPE).communicate()[0].decode('utf8')
     bus=None; dev=None
     for line in stuff.split('\n'):
         if not 'Omron' in line: continue
@@ -24,4 +26,4 @@ def device():
     return devfile
 
 if '__main__' == __name__:
-    print device()
+    print(device())
